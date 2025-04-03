@@ -1,3 +1,7 @@
 # BatteryFormer
-1.python data.py
-2.python main.py
+
+# cif to graph
+run "python data.py"
+
+#  train model
+run "python main.py"
