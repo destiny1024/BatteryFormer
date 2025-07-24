@@ -19,7 +19,7 @@ from torch_geometric.nn import global_mean_pool as gap, global_max_pool as gmp
 from sklearn.metrics import mean_squared_error,mean_absolute_error,r2_score
 from sklearn.model_selection import train_test_split
 from torch.optim import lr_scheduler
-from tqdm import tqdm  # 导入 tqdm
+from tqdm import tqdm  
 torch.cuda.empty_cache()
 import warnings
 import sys
@@ -50,5 +50,5 @@ def save_graph_list_as_npz(graph_list, filename, dataset_type='data_set'):
         #print(f'the_idx_{i}', data.the_idx)
     np.savez(filename, **npz_data)
 
-# 保存训练集
+
 save_graph_list_as_npz(data_set, 'graph_data_set.npz', dataset_type='data_set')
