@@ -57,7 +57,7 @@ class CIFData(Dataset):
             if len(nbr) < self.max_num_nbr:
                 nbr_fea_idx.append(list(map(lambda x: x[2], nbr)) + [0] * (self.max_num_nbr - len(nbr)))
                 nbr_element.append([nbrs[0].specie for nbrs in nbr])
-                numbers = [Element(elem).X for elem in nbr_element[0]]
+                numbers = [Element(elem).atomic_radius for elem in nbr_element[0]]
                 nbr_fea.append([(numbers[i] + numbers[i+1]) / 2 for i in range(len(numbers)-1)] + [numbers[-1]]+ [self.radius + 1.] * (self.max_num_nbr - len(nbr)))
         
             else:
@@ -99,14 +99,13 @@ class Graph_list(Dataset):
             edge_features = edge_features.view(-1,41)
             adj_matrix = materials[0][2]
             y = materials[1]
-            #print(y)
             mp_id = materials[2]
             
             return node_features, edge_features, adj_matrix, y, mp_id
         
         materialss = Crystal_dataset(material)
         graph_crystal = Data(x=materialss[0],edge_attr=materialss[1],edge_index=materialss[2],y=materialss[3],the_idx=materialss[4])
-        print(graph_crystal)
+        #print(graph_crystal)
         return graph_crystal
 
     
